@@ -9,6 +9,7 @@ import logging.Log;
 import basics.DEFINE;
 import parsers.SongListParser;
 import debugging.Print;
+import web.Client;
 
 public class control_structure {
 	public static void main(String[] args){
@@ -25,12 +26,15 @@ public class control_structure {
 		ll.write(2, "Parsing SongList\r\n");
 		SongListParser slp = new SongListParser(DEFINE.SONG_LIST_LOCATION, ll);
 		ArrayList<ArrayList<String>> songs = slp.load_and_parse();
-		Print.print(songs);
 		ll.write(2, "SongList parsing complete. Took " + (System.currentTimeMillis() - time_elapsed) + "ms.\r\n");
 	
-		
+		time_elapsed = System.currentTimeMillis();
+		ll.write(2, "Starting Client\r\n");
+		Client cc = new Client(DEFINE.BASE_URL, ll);
+		ll.write(2, "Client ready. Took " + (System.currentTimeMillis() - time_elapsed) + "ms.\r\n");
 
-		
+		cc.getSong(songs.get(0).get(2));
+		System.out.println(cc.getPageSource());
 		
 
 		ll.write(2, "All operations complete at " + dateFormat.format(new Date()) + ". Took " + (System.currentTimeMillis() - time_start) + "ms.\r\n");

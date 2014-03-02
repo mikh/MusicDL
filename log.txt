@@ -1,8 +1,0 @@
-
-Starting MusicDL v0.0
-Starting at 2014/02/05 20:15:09
-Parsing SongList
-SongList parsing complete. Took 12ms.
-All operations complete at 2014/02/05 20:15:09. Took 13ms.
-Performing cleanup.
-
